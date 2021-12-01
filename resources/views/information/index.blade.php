@@ -22,11 +22,11 @@
     <table class="table text-left">
         <tr>
             <th>№</th>
-            <th>Rahbariyat</th>
-            <th>Boshqarma</th>
-            <th>Bo'lim</th>
-            <th>Lavozim</th>
-            <th>Xodimlar</th>
+            <th style="min-width:200px">Rahbariyat</th>
+            <th style="min-width:200px">Boshqarma</th>
+            <th style="min-width:200px">Bo'lim</th>
+            <th style="min-width:200px">Lavozim</th>
+            <th style="min-width:200px">Xodimlar</th>
             <th style="min-width:200px" class="table text-center">O'z vaqtida bajarilgan<br>topshiriqar ulushi<br>(foizda)</th>
             <th style="min-width:200px" class="table text-center">Ijro intizomi<br>talablariga rioya<br>etilganligi uchun ballar<br>(15-60 ballgacha)</th>
             <th style="min-width:200px" class="table text-center">Tashabbuskorlik<br>uchun ballar<br>(15 ballgacha)</th>
@@ -56,6 +56,7 @@
         </tr>
         @endforeach
     </table>
+    <a href="export" class="btn btn-success">Excel fayl</a> <br>
 
 @endsection
 
