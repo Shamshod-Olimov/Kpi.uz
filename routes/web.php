@@ -38,4 +38,5 @@ Route::post('/calculator', 'App\Http\Controllers\CalculatorController@calculate'
 Route::get('/information', 'App\Http\Controllers\CalculatorController@show');
 Route::get('/calculator/delete/{id}', 'App\Http\Controllers\CalculatorController@destroy');
 
+Route::get('export', 'App\Http\Controllers\ExportController@export');
 
