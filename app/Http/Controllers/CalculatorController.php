@@ -23,7 +23,7 @@ class CalculatorController extends Controller
      */
     public function index(Calculator $calculator)
     {
-        $kpis = Kpi::all();
+        $kpis = Kpi::sortable()->paginate(10);
         $workers = Worker::all();
         $sections = Section::all();
         $departments = Department::all();
@@ -95,7 +95,7 @@ class CalculatorController extends Controller
      */
     public function show()
     {
-        $informations = Kpi::all();
+        $informations = Kpi::sortable()->paginate(10);
         return view('information.index', compact('informations'));
     }
 

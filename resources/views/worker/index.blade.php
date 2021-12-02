@@ -19,20 +19,33 @@
         </div>
     @endif
 
-    <?php $no = 1 ?>
+    <form class="form-inline" method="GET">
+        <div class="form-group mb-2">
+            <label for="filter" class="col-sm-2 col-form-label px-4">Filter</label>
+            <input type="text" class="form-control" id="filter" name="filter" placeholder="Xodim ismi..." value="{{ $filter }}">
+        </div>
+        <button type="submit" class="btn btn-default mb-2">Filter</button>
+    </form>
 
     <table class="table">
         <tr>
             <th>№</th>
             <th>Ismi</th>
             <th>Familyasi</th>
-            <th>Lavozimi</th>
-            <th>Bo'limi</th>
-            <th>Statusi</th>
+            <th>@sortablelink('speciality', 'Lavozimi')</th>
+            <th>@sortablelink('section_id ', 'Bo\'limi')</th>
+            <th>@sortablelink('status', 'Statusi')</th>
         </tr>
+
+        @if ($workers->count() == 0)
+            <tr>
+                <td colspan="6">Malumot kiritilmagan</td>
+            </tr>
+        @endif
+
         @foreach ($workers as $worker)
             <tr>
-                <td>{{ $no++ }}</td>
+                <td>{{$loop->iteration}}</td>
                 <td>{{ $worker->name }}</td>
                 <td>{{ $worker->surname }}</td>
                 <td>{{ $worker->speciality }}</td>
@@ -49,7 +62,10 @@
             </tr>
         @endforeach
     </table>
-    {{-- {{ $users->links() }} --}}
+    {{ $workers->links() }}
+    <p>
+        Umumiy ma`lumot: {{ $workers->total() }} tadan  {{$workers->count()}} tasi.
+    </p>
 @endsection
 
 @section('script')

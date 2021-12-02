@@ -19,17 +19,22 @@
         </div>
     @endif
 
-    <?php $no = 1 ?>
-
     <table class="table">
         <tr>
             <th>№</th>
-            <th>Rahbariyat</th>
+            <th>@sortablelink('leadership_id', 'Rahbariyat')</th>
             <th>Boshqarma nomi</th>
         </tr>
+
+        @if ($departments->count() == 0)
+            <tr>
+                <td colspan="3">Malumot kiritilmagan</td>
+            </tr>
+        @endif
+
         @foreach ($departments as $department)
             <tr>
-                <td>{{ $no++ }}</td>
+                <td>{{$loop->iteration}}</td>
                 <td>
                     @foreach ($leaderships as $leadership)
                         @if ($department->leadership_id == $leadership->id) {{ $leadership->name }} @endif
@@ -43,7 +48,10 @@
             </tr>
         @endforeach
     </table>
-    {{-- {{ $departments->links() }} --}}
+    {{ $departments->links() }}
+    <p>
+        Umumiy ma`lumot: {{ $departments->total() }} tadan  {{$departments->count()}} tasi.
+    </p>
 @endsection
 
 @section('script')

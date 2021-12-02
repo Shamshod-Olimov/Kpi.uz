@@ -19,7 +19,7 @@
         <!-- /.card-header -->
         <!-- form start -->
         @foreach ($leaderships as $leadership)
-        <form action="/leadership/edit/{{ $leadership->id }}" method="POST" enctype="multipart/form-data">
+        <form action="/leadership/edit/{{ $leadership->id }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="form-group row">

@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Section extends Model
 {
     use HasFactory;
+    use Sortable;
 
     protected $table = 'sections';
     protected $fillable = [
@@ -18,4 +20,8 @@ class Section extends Model
     {
         return $this->belongsTo(Department::class);
     }
+
+    public $sortable = [
+        'name', 'department_id'
+    ];
 }
