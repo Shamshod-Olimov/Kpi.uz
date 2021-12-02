@@ -13,11 +13,22 @@ class WorkerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $workers = Worker::all();
+
         $items = Section::all();
-        return view('worker.index', compact('workers','items'));
+        $filter = $request->query('filter');
+
+        if (!empty($filter)) {
+            $workers = Worker::sortable()
+                ->where('workers.name', 'like', '%'.$filter.'%')
+                ->paginate(10);
+        } else {
+            $workers = Worker::sortable()
+                ->paginate(10);
+        }
+
+        return view('worker.index', compact('items'))->with('workers', $workers)->with('filter', $filter);
     }
 
     /**

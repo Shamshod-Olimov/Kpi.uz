@@ -22,10 +22,10 @@
     <table class="table text-left">
         <tr>
             <th>№</th>
-            <th>Rahbariyat</th>
-            <th>Boshqarma</th>
-            <th>Bo'lim</th>
-            <th>Lavozim</th>
+            <th>@sortablelink('leadership', 'Rahbariyat')</th>
+            <th>@sortablelink('department', 'Boshqarma')</th>
+            <th>@sortablelink('section', 'Bo\'lim')</th>
+            <th>@sortablelink('speciality', 'Lavozim')</th>
             <th>Xodimlar</th>
             <th style="min-width:200px" class="table text-center">O'z vaqtida bajarilgan<br>topshiriqar ulushi<br>(foizda)</th>
             <th style="min-width:200px" class="table text-center">Ijro intizomi<br>talablariga rioya<br>etilganligi uchun ballar<br>(15-60 ballgacha)</th>
@@ -36,11 +36,11 @@
         @foreach ($workers as $worker)
 
 
-        <?php
+        @php
             $status = $worker->status;
             $worker_name = "$worker->name" . " " . "$worker->surname";
             $name = 'Blabla';
-        ?>
+        @endphp
 
         @foreach ($kpis as $kpi)
             @if ($kpi->worker == $worker_name)
@@ -54,7 +54,7 @@
             <form method="POST" action="/calculator">
             @csrf
             <tr>
-                <td>{{ $no++ }}</td>
+                <td>{{$loop->iteration}}</td>
                 <td>
                 @foreach ($sections as $section)
                 @foreach ($departments as $department)
@@ -121,19 +121,10 @@
                 <td>
                     <button type="submit" class="btn btn-success" style="width: 150px"> Hisoblash </button>
                 </td>
-
-                <td>
-                    @if (isset($all))
-                    <p>{{ $all }}ball</p>
-                    @endif
-                </td>
-                <td>
-                    @if (isset($percent))
-                    <p>{{ $percent }}%</p>
-                    @endif
-                </td>
             </tr>
             </form>
+        @else
+            
         @endif
         @endforeach
     </table>

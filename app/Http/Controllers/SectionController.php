@@ -15,7 +15,7 @@ class SectionController extends Controller
      */
     public function index()
     {
-        $sections = Section::all();
+        $sections = Section::sortable()->paginate(10);
         $departments = Department::all();
         return view('section.index', compact('sections', 'departments'));
     }

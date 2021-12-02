@@ -19,16 +19,21 @@
         </div>
     @endif
 
-    <?php $no = 1 ?>
-
     <table class="table">
         <tr>
             <th>№</th>
             <th>Nomi</th>
         </tr>
+
+        @if ($leaderships->count() == 0)
+            <tr>
+                <td colspan="2">Malumot kiritilmagan</td>
+            </tr>
+        @endif
+
         @foreach ($leaderships as $leadership)
             <tr>
-                <td>{{ $no++ }}</td>
+                <td>{{$loop->iteration}}</td>
                 <td>{{ $leadership->name }}</td>
                 <td class="text-right pr-5">
                     <a href="leadership/edit/{{ $leadership->id }}" class="btn btn-primary">Tahrirlash</a>
@@ -37,7 +42,10 @@
             </tr>
         @endforeach
     </table>
-    {{-- {{ $leaderships->links() }} --}}
+    {{ $leaderships->links() }}
+    <p>
+        Umumiy ma`lumot: {{ $leaderships->total() }} tadan  {{$leaderships->count()}} tasi.
+    </p>
 @endsection
 
 @section('script')

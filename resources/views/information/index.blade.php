@@ -17,28 +17,26 @@
         </ul>
     @endif
 
-    <?php $no = 1 ?>
-
     <table class="table text-left">
         <tr>
             <th>№</th>
-            <th style="min-width:200px">Rahbariyat</th>
-            <th style="min-width:200px">Boshqarma</th>
-            <th style="min-width:200px">Bo'lim</th>
-            <th style="min-width:200px">Lavozim</th>
+            <th style="min-width:200px">@sortablelink('leadership', 'Rahbariyat')</th>
+            <th style="min-width:200px">@sortablelink('department', 'Boshqarma')</th>
+            <th style="min-width:200px">@sortablelink('section', 'Bo\'lim')</th>
+            <th style="min-width:200px">@sortablelink('speciality', 'Lavozim')</th>
             <th style="min-width:200px">Xodimlar</th>
-            <th style="min-width:200px" class="table text-center">O'z vaqtida bajarilgan<br>topshiriqar ulushi<br>(foizda)</th>
-            <th style="min-width:200px" class="table text-center">Ijro intizomi<br>talablariga rioya<br>etilganligi uchun ballar<br>(15-60 ballgacha)</th>
-            <th style="min-width:200px" class="table text-center">Tashabbuskorlik<br>uchun ballar<br>(15 ballgacha)</th>
-            <th style="min-width:200px" class="table text-center">Yuqori turuvchi rahbar<br>tomonidan belgilangan<br>qo'shimcha ballar<br>(25 ballgacha)</th>
-            <th style="min-width:200px" class="table text-center">Umumiy ball</th>
-            <th style="min-width:200px" class="table text-center">Ustama foiz miqdori</th>
+            <th style="min-width:200px" class="table text-center">@sortablelink('done', 'O\'z vaqtida bajarilgan<br>topshiriqar ulushi<br>(foizda)')</th>
+            <th style="min-width:200px" class="table text-center">@sortablelink('executive_discipline', 'Ijro intizomi<br>talablariga rioya<br>etilganligi uchun ballar<br>(15-60 ballgacha)')</th>
+            <th style="min-width:200px" class="table text-center">@sortablelink('initiative', 'Tashabbuskorlik<br>uchun ballar<br>(15 ballgacha)')</th>
+            <th style="min-width:200px" class="table text-center">@sortablelink('extra', 'Yuqori turuvchi rahbar<br>tomonidan belgilangan<br>qo\'shimcha ballar<br>(25 ballgacha)')</th>
+            <th style="min-width:200px" class="table text-center">@sortablelink('total', 'Umumiy ball')</th>
+            <th style="min-width:200px" class="table text-center">@sortablelink('kpi_per', 'Ustama foiz miqdori')</th>
             <th style="min-width:140px"></th>
         </tr>
 
         @foreach ($informations as $information)
         <tr>
-            <td>{{ $no++ }}</td>
+            <td>{{$loop->iteration}}</td>
             <td>{{ $information->leadership }}</td>
             <td>{{ $information->department }}</td>
             <td>{{ $information->section }}</td>
@@ -56,6 +54,7 @@
         </tr>
         @endforeach
     </table>
+
     <a href="export" class="btn btn-success">Excel fayl</a> <br>
 
 @endsection
